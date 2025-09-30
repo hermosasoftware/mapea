@@ -1,0 +1,48 @@
+{
+  "company": {
+    "name": "MAPEA",
+    "slogan": "Aerial precision, terrestrial results",
+    "description": "We are specialists in topographic surveys with LiDAR drones, providing innovative and precise solutions for territorial analysis.",
+    "email": "info@mapea.cr",
+    "phone": "+506-8712-3676",
+    "address": "Costa Rica",
+    "website": "https://mapea.cr"
+  },
+  "buttons": {
+    "getQuote": "GET A QUOTE",
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "send": "Send",
+    "submit": "Submit",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "close": "Close"
+  },
+  "labels": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "company": "Company",
+    "subject": "Subject",
+    "required": "Required",
+    "optional": "Optional"
+  },
+  "messages": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "formSubmitted": "Form submitted successfully",
+    "formError": "Please check the form and try again"
+  },
+  "navigation": {
+    "home": "Home",
+    "mission": "Our Mission",
+    "services": "Services",
+    "clients": "Clients",
+    "contact": "Contact"
+  }
+}
+
+
+

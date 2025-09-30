@@ -1,0 +1,157 @@
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered Animations */
+.staggered1 { animation: fadeInUp 0.8s ease-out forwards; }
+.staggered2 { animation: fadeInUp 0.8s ease-out 0.2s forwards; }
+.staggered3 { animation: fadeInUp 0.8s ease-out 0.4s forwards; }
+.staggered4 { animation: fadeInUp 0.8s ease-out 0.6s forwards; }
+.staggered5 { animation: fadeInUp 0.8s ease-out 0.8s forwards; }
+.staggered6 { animation: fadeInUp 0.8s ease-out 1.0s forwards; }
+.staggered7 { animation: fadeInUp 0.8s ease-out 1.2s forwards; }
+.staggered8 { animation: fadeInUp 0.8s ease-out 1.4s forwards; }
+
+/* Dark theme specific styles */
+.darkGlow {
+  text-shadow: 0 0 30px rgba(136, 140, 113, 0.6);
+}
+
+.subtleGlow {
+  text-shadow: 0 0 15px rgba(136, 140, 113, 0.3);
+}
+
+/* Form specific styles */
+.formCard {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+.contactCard {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contactCard:hover {
+  background: rgba(136, 140, 113, 0.8); /* mapea-olive/80 */
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.inputField {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.inputField:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(136, 140, 113, 0.8); /* mapea-olive */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(136, 140, 113, 0.3);
+}
+
+.inputField::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.socialIcon {
+  background: rgba(136, 140, 113, 0.2); /* mapea-olive/20 */
+  border: 1px solid rgba(136, 140, 113, 0.3);
+  transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+  background: rgba(136, 140, 113, 0.8); /* mapea-olive/80 */
+  border-color: rgba(136, 140, 113, 1);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Image container styles */
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%, rgba(0,0,0,0.3) 100%);
+}
+
+
+
+
+
+
+

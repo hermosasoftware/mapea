@@ -1,0 +1,33 @@
+{
+  "title": "Our Clients",
+  "subtitle": "We work with a diverse range of clients, from private developers to government entities, always delivering exceptional results.",
+  "heroDescription": "Leading companies that trust <span class=\"font-bold text-mapea-olive\">MAPEA</span> to transform their projects with cutting-edge LiDAR technology.",
+  "stats": {
+    "projectsCompleted": "Projects Completed",
+    "satisfiedClients": "Satisfied Clients",
+    "satisfactionRate": "Satisfaction Rate",
+    "responseTime": "Response Time"
+  },
+  "clientStats": {
+    "projects": "Projects",
+    "areaMapped": "Area Mapped",
+    "precision": "Precision"
+  },
+  "clients": {
+    "client1": {
+      "name": "Construction Company A",
+      "sector": "Real Estate Development",
+      "description": "LiDAR mapping for large-scale residential projects, optimizing land use and infrastructure planning."
+    },
+    "client2": {
+      "name": "Government Municipality B",
+      "sector": "Public Infrastructure",
+      "description": "Topographic surveys for urban planning, road design, and environmental impact assessments."
+    },
+    "client3": {
+      "name": "Agricultural Corporation C",
+      "sector": "Agriculture & Forestry",
+      "description": "Precision mapping for crop management, irrigation optimization, and forest inventory."
+    }
+  }
+}

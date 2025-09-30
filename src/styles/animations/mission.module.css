@@ -1,0 +1,183 @@
+/* Mission Section Animations */
+
+.fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fadeInDown {
+  animation: fadeInDown 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.fadeInLeft {
+  animation: fadeInLeft 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fadeInRight {
+  animation: fadeInRight 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.scaleIn {
+  animation: scaleIn 0.6s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.slideInFromBottom {
+  animation: slideInFromBottom 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.staggered1 {
+  animation-delay: 0.1s;
+}
+
+.staggered2 {
+  animation-delay: 0.2s;
+}
+
+.staggered3 {
+  animation-delay: 0.3s;
+}
+
+.staggered4 {
+  animation-delay: 0.4s;
+}
+
+.staggered5 {
+  animation-delay: 0.5s;
+}
+
+.staggered6 {
+  animation-delay: 0.6s;
+}
+
+/* Hover Effects */
+.cardHover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cardHover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.iconHover {
+  transition: all 0.3s ease;
+}
+
+.iconHover:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.textGlow {
+  transition: text-shadow 0.3s ease;
+}
+
+.textGlow:hover {
+  text-shadow: 0 0 20px rgba(136, 140, 113, 0.5);
+}
+
+/* Background Pattern Animation */
+.backgroundPattern {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(136, 140, 113, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(136, 140, 113, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(136, 140, 113, 0.08) 0%, transparent 50%);
+  animation: patternFloat 20s ease-in-out infinite;
+}
+
+/* Dark theme specific styles */
+.darkGlow {
+  text-shadow: 0 0 30px rgba(136, 140, 113, 0.6);
+}
+
+.tropicalCard {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glassEffect {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromBottom {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes patternFloat {
+  0%, 100% {
+    background-position: 0% 0%, 100% 0%, 50% 100%;
+  }
+  33% {
+    background-position: 30% 30%, 70% 70%, 20% 80%;
+  }
+  66% {
+    background-position: 70% 20%, 30% 80%, 80% 20%;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fadeInUp,
+  .fadeInDown,
+  .fadeInLeft,
+  .fadeInRight,
+  .scaleIn,
+  .slideInFromBottom {
+    animation-duration: 0.6s;
+  }
+  
+  .cardHover:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}

@@ -1,0 +1,68 @@
+---
+import type { SEOConfig } from '../utils/seo';
+import { generateSEOTags, generateJSONLD, generateAlternateUrls } from '../utils/seo';
+import type { SupportedLanguage } from '../i18n/types';
+
+interface Props {
+  config: SEOConfig;
+  translations?: Record<string, any>;
+}
+
+const { config, translations } = Astro.props;
+
+// Generar tags SEO
+const seoTags = generateSEOTags(config);
+
+// Generar URLs alternativas
+const alternateUrls = generateAlternateUrls(
+  Astro.url.pathname.replace(`/${config.lang}`, '') || '/',
+  config.lang
+);
+
+// Generar JSON-LD
+const jsonLd = generateJSONLD(config);
+---
+
+<!-- Meta Tags Básicos -->
+<title>{seoTags.title}</title>
+<meta name="description" content={seoTags.description} />
+<meta name="keywords" content={seoTags.keywords} />
+<link rel="canonical" href={seoTags.canonical} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={seoTags.og.type} />
+<meta property="og:url" content={seoTags.og.url} />
+<meta property="og:title" content={seoTags.og.title} />
+<meta property="og:description" content={seoTags.og.description} />
+<meta property="og:image" content={seoTags.og.image} />
+<meta property="og:site_name" content={seoTags.og.siteName} />
+<meta property="og:locale" content={seoTags.og.locale} />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content={seoTags.twitter.card} />
+<meta name="twitter:url" content={seoTags.twitter.url} />
+<meta name="twitter:title" content={seoTags.twitter.title} />
+<meta name="twitter:description" content={seoTags.twitter.description} />
+<meta name="twitter:image" content={seoTags.twitter.image} />
+
+<!-- Hreflang para SEO multilingüe -->
+<link rel="alternate" hreflang="en" href={alternateUrls.en} />
+<link rel="alternate" hreflang="es" href={alternateUrls.es} />
+<link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
+
+<!-- Meta Tags Adicionales -->
+<meta name="robots" content="index, follow" />
+<meta name="author" content="MAPEA" />
+<meta name="theme-color" content="#888c71" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Preconnect para performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+
+
+
+

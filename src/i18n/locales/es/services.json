@@ -1,0 +1,25 @@
+{
+  "title": "Nuestros Servicios",
+  "subtitle": "Modelos 3D",
+  "tagline": "Con Drones y LiDAR",
+  "description": "Tecnología avanzada de drones LiDAR para mapeo 3D preciso, informes catastrales y análisis territorial integral. Proporcionamos soluciones de vanguardia para los desafíos modernos de levantamiento.",
+  "moreServices": "Más Servicios",
+  "services": {
+    "cadastralReports": {
+      "title": "Informes Catastrales",
+      "description": "Comprende tu propiedad en profundidad para procesos de venta y toma de decisiones."
+    },
+    "planRegistration": {
+      "title": "Registro de Planos",
+      "description": "Tramitación confiable ante las instituciones correspondientes."
+    },
+    "territorialAnalysis": {
+      "title": "Análisis Territorial",
+      "description": "Estudios técnicos que respaldan la planificación y desarrollo de proyectos."
+    },
+    "propertyAdvisory": {
+      "title": "Asesoría Inmobiliaria",
+      "description": "Orientación para el registro de propiedades, condominios, desarrollos urbanos y proyectos de parcelación."
+    }
+  }
+}

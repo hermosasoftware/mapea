@@ -1,0 +1,78 @@
+/* Animaciones para la sección Home */
+
+.fadeInLeft {
+  animation: fadeInLeft 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.fadeInRight {
+  animation: fadeInRight 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.scaleIn {
+  animation: scaleIn 1s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.staggered1 { animation-delay: 0.2s; }
+.staggered2 { animation-delay: 0.4s; }
+.staggered3 { animation-delay: 0.6s; }
+.staggered4 { animation-delay: 0.8s; }
+.staggered5 { animation-delay: 1s; }
+
+/* Keyframes */
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .fadeInLeft,
+  .fadeInRight {
+    animation-duration: 0.6s;
+    transform: translateY(20px);
+  }
+  
+  .fadeInLeft {
+    animation-name: fadeInUp;
+  }
+  
+  .fadeInRight {
+    animation-name: fadeInUp;
+  }
+}
+

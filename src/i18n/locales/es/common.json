@@ -1,0 +1,48 @@
+{
+  "company": {
+    "name": "MAPEA",
+    "slogan": "Precisión aérea, resultados terrestres",
+    "description": "Somos especialistas en levantamientos topográficos con drones LiDAR, brindando soluciones innovadoras y precisas para análisis territorial.",
+    "email": "info@mapea.cr",
+    "phone": "+506-8712-3676",
+    "address": "Costa Rica",
+    "website": "https://mapea.cr"
+  },
+  "buttons": {
+    "getQuote": "OBTENER COTIZACIÓN",
+    "learnMore": "Saber Más",
+    "contactUs": "Contáctanos",
+    "send": "Enviar",
+    "submit": "Enviar",
+    "readMore": "Leer Más",
+    "viewAll": "Ver Todo",
+    "close": "Cerrar"
+  },
+  "labels": {
+    "name": "Nombre",
+    "email": "Correo",
+    "phone": "Teléfono",
+    "message": "Mensaje",
+    "company": "Empresa",
+    "subject": "Asunto",
+    "required": "Requerido",
+    "optional": "Opcional"
+  },
+  "messages": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "success": "¡Éxito!",
+    "formSubmitted": "Formulario enviado exitosamente",
+    "formError": "Por favor revisa el formulario e inténtalo de nuevo"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "mission": "Nuestra Misión",
+    "services": "Servicios",
+    "clients": "Clientes",
+    "contact": "Contacto"
+  }
+}
+
+
+

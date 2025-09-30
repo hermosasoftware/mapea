@@ -1,0 +1,17 @@
+# Redirects for MAPEA
+# This file is used by Netlify and other static hosts
+
+# Redirect old paths to new ones (if any)
+# /old-path /new-path 301
+
+# Redirect www to non-www
+https://www.mapea.cr/* https://mapea.cr/:splat 301!
+
+# Redirect HTTP to HTTPS
+http://mapea.cr/* https://mapea.cr/:splat 301!
+
+# Handle SPA routing (if needed in future)
+# /admin/* /admin/index.html 200
+
+# Fallback for 404s
+/* /index.html 200

@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "title": {
+      "line1": "NOSOTROS",
+      "line2": "MAP(EA)®",
+      "line3": "TODO"
+    },
+    "subtitle": {
+      "line1": "Empresa de Levantamientos Topográficos",
+      "line2": "@Todo Costa Rica"
+    }
+  },
+  "features": {
+    "title": "¿Por qué elegir MAPEA?",
+    "precision": {
+      "title": "Tecnología de Precisión",
+      "description": "Drones LiDAR avanzados para mapeo preciso"
+    },
+    "experience": {
+      "title": "Equipo Experto",
+      "description": "Topógrafos profesionales con años de experiencia"
+    },
+    "innovation": {
+      "title": "Innovación",
+      "description": "Soluciones de vanguardia para desafíos modernos"
+    }
+  }
+}
+
+
+
