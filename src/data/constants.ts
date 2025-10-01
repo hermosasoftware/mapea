@@ -19,7 +19,7 @@ export const NAVIGATION_ITEMS = [
   { id: 'home', label: 'Home', href: '#home' },
   { id: 'mission', label: 'Our Mission', href: '#mission' },
   { id: 'services', label: 'Services', href: '#services' },
-  { id: 'clients', label: 'Clients', href: '#clients' },
+  //{ id: 'clients', label: 'Clients', href: '#clients' },
   { id: 'contact', label: 'Contact', href: '#contact' }
 ];
 

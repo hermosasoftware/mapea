@@ -23,25 +23,25 @@ const SERVICES = [
     id: "cadastral-reports",
     title: translations.services.cadastralReports.title,
     description: translations.services.cadastralReports.description,
-    icon: FaMap,
+    image: ASSETS.services.card1,
   },
   {
     id: "plan-registration",
     title: translations.services.planRegistration.title,
     description: translations.services.planRegistration.description,
-    icon: FaFileAlt,
+    image: ASSETS.services.card2,
   },
   {
     id: "territorial-analysis",
     title: translations.services.territorialAnalysis.title,
     description: translations.services.territorialAnalysis.description,
-    icon: FaChartArea,
+    image: ASSETS.services.card3,
   },
   {
     id: "property-advisory",
     title: translations.services.propertyAdvisory.title,
     description: translations.services.propertyAdvisory.description,
-    icon: FaHome,
+    image: ASSETS.services.card4,
   },
 ];
 ---
@@ -125,12 +125,12 @@ const SERVICES = [
         {
           SERVICES.map((service, index) => (
             <ServiceCard
-              icon={service.icon}
               title={service.title}
               description={service.description}
               className={`${styles.fadeInUp} ${styles[`staggered${index + 5}`]}`}
               animationClass={`${styles.fadeInUp} ${styles[`staggered${index + 5}`]}`}
               index={index}
+              image={service.image.src}
             />
           ))
         }
