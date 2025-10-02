@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mapea.cr/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_astro/
+Disallow: /node_modules/
+
+# Allow all language versions
+Allow: /en/
+Allow: /es/
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Host directive for canonical domain
+Host: https://mapea.cr
