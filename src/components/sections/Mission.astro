@@ -1,0 +1,143 @@
+---
+// Mission component - Static Astro component
+import { FaBullseye, FaEye, FaHeart, FaRocket } from "react-icons/fa";
+import { Card } from "../ui/Card";
+import { ValueCard } from "../ui/ValueCard";
+import { MissionCTA } from "../ui/MissionCTA";
+import OptimizedImage from "../ui/OptimizedImage.astro";
+import styles from "../../styles/animations/mission.module.css";
+import { ASSETS } from "../../data/assets";
+import { getTranslations } from "../../utils/i18n-astro";
+import type { SupportedLanguage } from "../../i18n/types";
+
+// Props interface
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+
+// Load translations
+const translations = await getTranslations(lang, "mission");
+
+const VALUES = [
+  {
+    icon: FaBullseye,
+    title: translations.values.precision.title,
+    description: translations.values.precision.description,
+  },
+  {
+    icon: FaRocket,
+    title: translations.values.innovation.title,
+    description: translations.values.innovation.description,
+  },
+  {
+    icon: FaEye,
+    title: translations.values.transparency.title,
+    description: translations.values.transparency.description,
+  },
+  {
+    icon: FaHeart,
+    title: translations.values.commitment.title,
+    description: translations.values.commitment.description,
+  },
+];
+---
+
+<section
+  id="mission"
+  class="relative min-h-screen py-20 lg:py-32 overflow-hidden"
+>
+  <!-- Optimized Background Image -->
+  <div class="absolute inset-0 -z-10">
+    <OptimizedImage
+      src={ASSETS.backgrounds.missionBG}
+      alt="Tropical jungle landscape showcasing MAPEA's LiDAR surveying territory in Costa Rica - dense forest canopy ideal for precision drone mapping"
+      width={1920}
+      height={1080}
+      className="w-full h-full object-cover"
+      loading="eager"
+      quality={85}
+    />
+  </div>
+
+  <!-- Dark overlay for readability using palette colors -->
+  <div class="absolute inset-0 bg-mapea-black/70"></div>
+
+  <div class="relative section-container">
+    <!-- Hero Section - Dark Theme -->
+    <div class="text-center mb-20">
+      <h1
+        class={`text-4xl lg:text-6xl font-bold text-mapea-white mb-8 ${styles.fadeInDown} ${styles.staggered1} ${styles.darkGlow}`}
+      >
+        {translations.title}
+      </h1>
+      <div class={`max-w-4xl mx-auto ${styles.fadeInUp} ${styles.staggered2}`}>
+        <p
+          class="text-xl lg:text-2xl text-mapea-light-gray leading-relaxed mb-6"
+          set:html={translations.subtitle1}
+        />
+        <p
+          class="text-lg lg:text-xl text-mapea-light-gray leading-relaxed"
+          set:html={translations.subtitle2}
+        />
+      </div>
+    </div>
+
+    <!-- Mission Statement Card with Glass Effect -->
+    <div class={`mb-24 ${styles.scaleIn} ${styles.staggered3}`}>
+      <Card
+        variant="glass"
+        padding="xl"
+        className="max-w-6xl mx-auto text-center shadow-2xl"
+        client:load
+      >
+        <div class="py-8">
+          <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-mapea-white">
+            {translations.missionTitle}
+          </h2>
+          <p
+            class="text-xl lg:text-2xl leading-relaxed text-mapea-light-gray max-w-4xl mx-auto mb-16"
+          >
+            {translations.missionDescription}
+          </p>
+
+          <!-- Values Grid - Inside the glass card -->
+          <div>
+            <h3
+              class={`text-2xl lg:text-3xl font-bold text-center text-mapea-white mb-12 ${styles.fadeInUp} ${styles.staggered4} ${styles.darkGlow}`}
+            >
+              {translations.ourValues}
+            </h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {
+                VALUES.map((value, index) => (
+                  <ValueCard
+                    icon={value.icon}
+                    title={value.title}
+                    description={value.description}
+                    className={`${styles.fadeInUp} ${styles[`staggered${index + 5}`]}`}
+                    animationClass={`${styles.fadeInUp} ${styles[`staggered${index + 5}`]}`}
+                    index={index}
+                  />
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div>
+
+    <!-- Call to Action - Dark Theme -->
+    <MissionCTA
+      title={translations.cta.title}
+      description={translations.cta.description}
+      knowServicesText={translations.cta.knowServices}
+      requestQuoteText={translations.cta.requestQuote}
+      className={`${styles.slideInFromBottom} ${styles.staggered6}`}
+      animationClass={`${styles.slideInFromBottom} ${styles.staggered6}`}
+      client:load
+    />
+  </div>
+</section>

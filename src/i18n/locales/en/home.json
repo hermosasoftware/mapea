@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "title": {
+      "line1": "WE",
+      "line2": "MAP(EA)®",
+      "line3": "IT ALL"
+    },
+    "subtitle": {
+      "line1": "Land Surveying Company",
+      "line2": "@All Costa Rica"
+    }
+  },
+  "features": {
+    "title": "Why Choose MAPEA?",
+    "precision": {
+      "title": "Precision Technology",
+      "description": "Advanced LiDAR drones for accurate mapping"
+    },
+    "experience": {
+      "title": "Expert Team",
+      "description": "Professional surveyors with years of experience"
+    },
+    "innovation": {
+      "title": "Innovation",
+      "description": "Cutting-edge solutions for modern challenges"
+    }
+  }
+}
+
+
+

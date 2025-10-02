@@ -1,0 +1,25 @@
+{
+  "title": "Our Services",
+  "subtitle": "3D Models",
+  "tagline": "With Drones and LiDAR",
+  "description": "Advanced LiDAR drone technology for precise 3D mapping, cadastral reports, and comprehensive territorial analysis. We provide cutting-edge solutions for modern surveying challenges.",
+  "moreServices": "More Services",
+  "services": {
+    "cadastralReports": {
+      "title": "Cadastral Reports",
+      "description": "Understand your property in depth for sales processes and decision making."
+    },
+    "planRegistration": {
+      "title": "Plan Registration", 
+      "description": "Reliable filing with the corresponding institutions."
+    },
+    "territorialAnalysis": {
+      "title": "Territorial Analysis",
+      "description": "Technical studies that support planning and project development."
+    },
+    "propertyAdvisory": {
+      "title": "Property Advisory",
+      "description": "Guidance for registering properties, condominiums, urban developments, and parcel projects."
+    }
+  }
+}

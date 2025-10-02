@@ -1,0 +1,60 @@
+{
+  "hero": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch for your LiDAR surveying needs",
+    "description": "Ready to start your project? Contact us for a free consultation and quote."
+  },
+  "form": {
+    "title": "Send us a Message",
+    "name": {
+      "label": "Full Name",
+      "placeholder": "Enter your full name"
+    },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "Enter your email"
+    },
+    "phone": {
+      "label": "Phone Number",
+      "placeholder": "Enter your phone number"
+    },
+    "company": {
+      "label": "Company",
+      "placeholder": "Enter your company name"
+    },
+    "subject": {
+      "label": "Subject",
+      "placeholder": "What can we help you with?"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Tell us about your project...",
+      "required": "Message is required"
+    },
+    "submit": "Send Message",
+    "success": "Thank you! Your message has been sent successfully.",
+    "error": "Sorry, there was an error sending your message. Please try again."
+  },
+  "info": {
+    "title": "Get in Touch",
+    "address": {
+      "title": "Address",
+      "value": "Costa Rica"
+    },
+    "phone": {
+      "title": "Phone",
+      "value": "+506-8712-3676"
+    },
+    "email": {
+      "title": "Email",
+      "value": "info@mapea.cr"
+    },
+    "hours": {
+      "title": "Business Hours",
+      "value": "Monday - Friday: 8:00 AM - 5:00 PM"
+    }
+  }
+}
+
+
+

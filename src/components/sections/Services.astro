@@ -1,0 +1,140 @@
+---
+// Services component - Static Astro component
+import { FaMap, FaFileAlt, FaChartArea, FaHome } from "react-icons/fa";
+import { Card } from "../ui/Card";
+import { ServiceCard } from "../ui/ServiceCard";
+import styles from "../../styles/animations/services.module.css";
+import { ASSETS } from "../../data/assets";
+import { getTranslations } from "../../utils/i18n-astro";
+import type { SupportedLanguage } from "../../i18n/types";
+
+// Props interface
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+
+// Load translations
+const translations = await getTranslations(lang, "services");
+
+const SERVICES = [
+  {
+    id: "cadastral-reports",
+    title: translations.services.cadastralReports.title,
+    description: translations.services.cadastralReports.description,
+    icon: FaMap,
+  },
+  {
+    id: "plan-registration",
+    title: translations.services.planRegistration.title,
+    description: translations.services.planRegistration.description,
+    icon: FaFileAlt,
+  },
+  {
+    id: "territorial-analysis",
+    title: translations.services.territorialAnalysis.title,
+    description: translations.services.territorialAnalysis.description,
+    icon: FaChartArea,
+  },
+  {
+    id: "property-advisory",
+    title: translations.services.propertyAdvisory.title,
+    description: translations.services.propertyAdvisory.description,
+    icon: FaHome,
+  },
+];
+---
+
+<section
+  id="services"
+  class="relative min-h-screen py-20 lg:py-32 bg-mapea-black"
+>
+  <!-- Dark gradient overlay -->
+  <div class={`absolute inset-0 ${styles.gradientOverlay}`}></div>
+
+  <div class="relative section-container">
+    <!-- Main Services Section -->
+    <div class="mb-32">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Left Column - Content -->
+        <div class={`space-y-8 ${styles.fadeInLeft} ${styles.staggered1}`}>
+          <div>
+            <h2
+              class={`text-4xl lg:text-6xl font-bold text-mapea-white mb-8 ${styles.darkGlow}`}
+            >
+              {translations.title}
+            </h2>
+
+            <div class="space-y-6">
+              <h3 class="text-2xl lg:text-3xl font-bold text-mapea-white">
+                {translations.subtitle}
+              </h3>
+
+              <div class="w-24 h-1 bg-mapea-olive"></div>
+
+              <p
+                class="text-lg lg:text-xl text-mapea-light-gray leading-relaxed"
+              >
+                {translations.description}
+              </p>
+
+              <p class="text-base lg:text-lg text-mapea-light-gray/80">
+                <span class="font-semibold text-mapea-olive"
+                  >{translations.tagline}</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column - Video -->
+        <div class={`${styles.fadeInRight} ${styles.staggered2}`}>
+          <div
+            class={`relative ${styles.videoContainer} ${styles.scaleIn} ${styles.staggered3}`}
+          >
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              class="w-full h-[400px] lg:h-[500px] object-cover rounded-2xl"
+            >
+              <source src={ASSETS.videos.droneLidarDemo540p} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div class={styles.videoOverlay}></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- More Services Section -->
+    <div>
+      <div class={`text-center mb-16 ${styles.fadeInUp} ${styles.staggered4}`}>
+        <h3
+          class={`text-3xl lg:text-4xl font-bold text-mapea-white mb-8 ${styles.subtleGlow}`}
+        >
+          {translations.moreServices}
+        </h3>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        {
+          SERVICES.map((service, index) => (
+            <ServiceCard
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              className={`${styles.fadeInUp} ${styles[`staggered${index + 5}`]}`}
+              animationClass={`${styles.fadeInUp} ${styles[`staggered${index + 5}`]}`}
+              index={index}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

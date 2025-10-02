@@ -1,0 +1,32 @@
+{
+  "title": "MAPEA - Advanced LiDAR Surveying Solutions",
+  "subtitle1": "We use the <span class=\"font-bold text-mapea-olive\">best surveying technology</span> to turn data into smart decisions.",
+  "subtitle2": "Our team blends <span class=\"font-semibold text-mapea-olive\">precision, innovation, and vision</span>, creating solutions that transform how we understand and interact with our territory.",
+  "missionTitle": "Redefining the Future of Territorial Mapping",
+  "missionDescription": "At Mapea, we believe that technology should serve to build a better world. We combine the precision of LiDAR drones with human knowledge to offer solutions that not only map territory, but open infinite possibilities for sustainable development.",
+  "ourValues": "Our Values",
+  "cta": {
+    "title": "Ready to transform your project?",
+    "description": "Discover how our services can optimize your processes and take you to extraordinary results with cutting-edge technology.",
+    "knowServices": "Know Our Services",
+    "requestQuote": "Request Quote"
+  },
+  "values": {
+    "precision": {
+      "title": "Precision",
+      "description": "Every measurement counts. We use cutting-edge LiDAR technology to guarantee accurate and reliable results."
+    },
+    "innovation": {
+      "title": "Innovation", 
+      "description": "Pioneers in implementing drones for topographic surveys, always at the technological forefront."
+    },
+    "transparency": {
+      "title": "Transparency",
+      "description": "Clear processes, direct communication and verifiable results in every project we undertake."
+    },
+    "commitment": {
+      "title": "Commitment",
+      "description": "More than a service, it is our passion. We are committed to the success of each client and project."
+    }
+  }
+}

@@ -1,0 +1,174 @@
+---
+// Clients component - Static Astro component
+import { FaBuilding, FaIndustry, FaCity } from "react-icons/fa";
+import { Card } from "../ui/Card";
+import { StatsCard } from "../ui/StatsCard";
+import { ClientCard } from "../ui/ClientCard";
+import OptimizedImage from "../ui/OptimizedImage.astro";
+import styles from "../../styles/animations/clients.module.css";
+import { ASSETS } from "../../data/assets";
+import { getTranslations } from "../../utils/i18n-astro";
+import type { SupportedLanguage } from "../../i18n/types";
+
+// Props interface
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+
+// Load translations
+const translations = await getTranslations(lang, "clients");
+
+// Datos temporales hasta que lleguen los reales
+const TEMP_CLIENTS = [
+  {
+    id: "client-1",
+    name: translations.clients.client1.name,
+    sector: translations.clients.client1.sector,
+    description: translations.clients.client1.description,
+    icon: FaBuilding,
+    stats: {
+      projects: "25+",
+      area: "500 Ha",
+      precision: "99.8%",
+    },
+  },
+  {
+    id: "client-2",
+    name: translations.clients.client2.name,
+    sector: translations.clients.client2.sector,
+    description: translations.clients.client2.description,
+    icon: FaCity,
+    stats: {
+      projects: "15+",
+      area: "1,200 Ha",
+      precision: "99.9%",
+    },
+  },
+  {
+    id: "client-3",
+    name: translations.clients.client3.name,
+    sector: translations.clients.client3.sector,
+    description: translations.clients.client3.description,
+    icon: FaIndustry,
+    stats: {
+      projects: "30+",
+      area: "800 Ha",
+      precision: "99.7%",
+    },
+  },
+];
+
+const STATS = [
+  {
+    number: "500+",
+    label: translations.stats.projectsCompleted,
+  },
+  {
+    number: "50+",
+    label: translations.stats.satisfiedClients,
+  },
+  {
+    number: "95%",
+    label: translations.stats.satisfactionRate,
+  },
+  {
+    number: "24h",
+    label: translations.stats.responseTime,
+  },
+];
+---
+
+<section
+  id="clients"
+  class="relative min-h-screen py-20 lg:py-32 overflow-hidden"
+>
+  <!-- Optimized Background Image -->
+  <div class="absolute inset-0 -z-10">
+    <OptimizedImage
+      src={ASSETS.backgrounds.clientBG}
+      alt="Professional business landscape representing MAPEA's diverse client portfolio in Costa Rica - modern infrastructure and development projects"
+      width={1920}
+      height={1080}
+      className="w-full h-full object-cover"
+      loading="lazy"
+      quality={85}
+    />
+  </div>
+
+  <!-- Dark overlay for readability using palette colors -->
+  <div class="absolute inset-0 bg-mapea-black/70"></div>
+
+  <div class="relative section-container">
+    <!-- Hero Section - Dark Theme -->
+    <div class="text-center mb-12 sm:mb-16 lg:mb-20">
+      <h2
+        class={`text-3xl sm:text-4xl lg:text-6xl font-bold text-mapea-white mb-6 sm:mb-8 ${styles.fadeInDown} ${styles.staggered1} ${styles.darkGlow}`}
+      >
+        {translations.title}
+      </h2>
+      <div
+        class={`max-w-4xl mx-auto px-4 ${styles.fadeInUp} ${styles.staggered2}`}
+      >
+        <p
+          class="text-lg sm:text-xl lg:text-2xl text-mapea-light-gray leading-relaxed mb-6"
+          set:html={translations.heroDescription}
+        />
+        <p class="text-base sm:text-lg lg:text-xl text-mapea-light-gray/80">
+          {translations.subtitle}
+        </p>
+      </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div
+      class={`mb-16 sm:mb-20 lg:mb-24 ${styles.fadeInUp} ${styles.staggered3}`}
+    >
+      <Card
+        variant="default"
+        padding="md"
+        className="max-w-4xl mx-auto"
+        client:load
+      >
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center"
+        >
+          {
+            STATS.map((stat, index) => (
+              <StatsCard
+                number={stat.number}
+                label={stat.label}
+                className={`${styles.statsCounter} ${styles[`staggered${index + 4}`]}`}
+                animationClass={`${styles.statsCounter} ${styles[`staggered${index + 4}`]}`}
+                variant="default"
+                size="md"
+              />
+            ))
+          }
+        </div>
+      </Card>
+    </div>
+
+    <!-- Clients Grid -->
+    <div class="mb-16 sm:mb-20 lg:mb-24">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        {
+          TEMP_CLIENTS.map((client, index) => (
+            <ClientCard
+              icon={client.icon}
+              name={client.name}
+              sector={client.sector}
+              description={client.description}
+              stats={client.stats}
+              statsLabels={translations.clientStats}
+              className={`${styles.fadeInUp} ${styles[`staggered${index + 5}`]}`}
+              animationClass={`${styles.fadeInUp} ${styles[`staggered${index + 5}`]}`}
+              index={index}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

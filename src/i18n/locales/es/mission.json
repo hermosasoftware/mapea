@@ -1,0 +1,32 @@
+{
+  "title": "MAPEA - Soluciones Avanzadas de Levantamiento LiDAR",
+  "subtitle1": "Utilizamos la <span class=\"font-bold text-mapea-olive\">mejor tecnología de levantamiento</span> para convertir datos en decisiones inteligentes.",
+  "subtitle2": "Nuestro equipo combina <span class=\"font-semibold text-mapea-olive\">precisión, innovación y visión</span>, creando soluciones que transforman cómo entendemos e interactuamos con nuestro territorio.",
+  "missionTitle": "Redefiniendo el Futuro del Mapeo Territorial",
+  "missionDescription": "En Mapea, creemos que la tecnología debe servir para construir un mundo mejor. Combinamos la precisión de los drones LiDAR con el conocimiento humano para ofrecer soluciones que no solo mapean territorio, sino que abren infinitas posibilidades para el desarrollo sostenible.",
+  "ourValues": "Nuestros Valores",
+  "cta": {
+    "title": "¿Listo para transformar tu proyecto?",
+    "description": "Descubre cómo nuestros servicios pueden optimizar tus procesos y llevarte a resultados extraordinarios con tecnología de vanguardia.",
+    "knowServices": "Conoce Nuestros Servicios",
+    "requestQuote": "Solicitar Cotización"
+  },
+  "values": {
+    "precision": {
+      "title": "Precisión",
+      "description": "Cada medición cuenta. Utilizamos tecnología LiDAR de vanguardia para garantizar resultados precisos y confiables."
+    },
+    "innovation": {
+      "title": "Innovación",
+      "description": "Pioneros en la implementación de drones para levantamientos topográficos, siempre a la vanguardia tecnológica."
+    },
+    "transparency": {
+      "title": "Transparencia", 
+      "description": "Procesos claros, comunicación directa y resultados verificables en cada proyecto que emprendemos."
+    },
+    "commitment": {
+      "title": "Compromiso",
+      "description": "Más que un servicio, es nuestra pasión. Estamos comprometidos con el éxito de cada cliente y proyecto."
+    }
+  }
+}

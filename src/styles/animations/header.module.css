@@ -1,0 +1,318 @@
+/* Header Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Header specific classes */
+.header {
+  animation: slideDown 0.6s ease-out forwards;
+}
+
+.headerScrolled {
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.headerTransparent {
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Logo animations */
+.logo {
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation items */
+.navItem {
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.navItem:hover {
+  transform: translateY(-1px);
+}
+
+.navItem::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navItem:hover::after {
+  width: 80%;
+}
+
+.navItemActive::after {
+  width: 80%;
+}
+
+/* Mobile menu animations */
+.mobileMenu {
+  animation: scaleIn 0.3s ease-out forwards;
+  transform-origin: top right;
+}
+
+.mobileMenuHidden {
+  opacity: 0;
+  transform: scale(0.95) translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.mobileMenuVisible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: all 0.3s ease;
+}
+
+.mobileNavItem {
+  transition: all 0.2s ease;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.mobileNavItem:hover {
+  transform: translateX(8px);
+  background: rgba(136, 140, 113, 0.1); /* mapea-olive/10 */
+}
+
+/* Button animations */
+.ctaButton {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(136, 140, 113, 0.3); /* mapea-olive shadow */
+}
+
+/* Hamburger menu animation */
+.hamburger {
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.hamburgerActive {
+  transform: rotate(90deg);
+}
+
+/* Radix Navigation Menu Styles */
+.navigationMenuRoot {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  width: 100vw;
+  z-index: 1;
+}
+
+.navigationMenuList {
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 6px;
+  list-style: none;
+  margin: 0;
+}
+
+.navigationMenuTrigger {
+  padding: 8px 12px;
+  outline: none;
+  user-select: none;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: 4px;
+  font-size: 15px;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+  transition: all 0.3s ease;
+}
+
+.navigationMenuTrigger:hover,
+.navigationMenuTrigger:focus {
+  background-color: rgba(136, 140, 113, 0.1); /* mapea-olive/10 */
+}
+
+.navigationMenuContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  animation-duration: 250ms;
+  animation-timing-function: ease;
+}
+
+.navigationMenuIndicator {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 10px;
+  top: 100%;
+  overflow: hidden;
+  z-index: 1;
+  transition: width, transform 250ms ease;
+}
+
+.navigationMenuViewport {
+  position: relative;
+  transform-origin: top center;
+  margin-top: 10px;
+  width: 100%;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  height: var(--radix-navigation-menu-viewport-height);
+  transition: width, height, 300ms ease;
+}
+
+/* Radix Dialog Mobile Menu Styles */
+.mobileMenuOverlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.mobileMenuOverlayVisible {
+  opacity: 1;
+}
+
+.mobileMenuContent {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  width: 90vw;
+  max-width: 400px;
+  max-height: 85vh;
+  overflow-y: auto;
+  z-index: 51;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.mobileMenuContentVisible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.mobileMenuClose {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobileMenuClose:hover {
+  color: #374151;
+  transform: scale(1.1);
+}
+
+.mobileNavActive {
+  background-color: rgba(136, 140, 113, 0.1) !important;
+  color: #888c71 !important;
+  font-weight: 600 !important;
+  border-left: 4px solid #888c71 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navItem {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .mobileMenu {
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+}
+
+
+

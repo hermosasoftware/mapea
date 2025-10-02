@@ -1,0 +1,37 @@
+---
+// Footer component - Static Astro component for better performance
+import { getTranslations } from '../../utils/i18n-astro';
+import type { SupportedLanguage } from '../../i18n/types';
+
+// Props interface
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+
+// Load translations
+const translations = await getTranslations(lang, 'footer');
+---
+
+<footer class="bg-mapea-black text-white py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="text-2xl font-bold mb-2">Mapea</div>
+      <p class="text-mapea-light-gray mb-4">
+        {translations.slogan}
+      </p>
+      <div class="border-t border-mapea-dark-gray pt-4">
+        <p class="text-sm text-mapea-light-gray">
+          {translations.copyright}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+

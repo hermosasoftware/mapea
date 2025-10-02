@@ -1,0 +1,60 @@
+{
+  "hero": {
+    "title": "Contáctanos",
+    "subtitle": "Ponte en contacto para tus necesidades de levantamiento LiDAR",
+    "description": "¿Listo para comenzar tu proyecto? Contáctanos para una consulta gratuita y cotización."
+  },
+  "form": {
+    "title": "Envíanos un Mensaje",
+    "name": {
+      "label": "Nombre Completo",
+      "placeholder": "Ingresa tu nombre completo"
+    },
+    "email": {
+      "label": "Correo Electrónico",
+      "placeholder": "Ingresa tu correo"
+    },
+    "phone": {
+      "label": "Número de Teléfono",
+      "placeholder": "Ingresa tu número de teléfono"
+    },
+    "company": {
+      "label": "Empresa",
+      "placeholder": "Ingresa el nombre de tu empresa"
+    },
+    "subject": {
+      "label": "Asunto",
+      "placeholder": "¿En qué podemos ayudarte?"
+    },
+    "message": {
+      "label": "Mensaje",
+      "placeholder": "Cuéntanos sobre tu proyecto...",
+      "required": "El mensaje es requerido"
+    },
+    "submit": "Enviar Mensaje",
+    "success": "¡Gracias! Tu mensaje ha sido enviado exitosamente.",
+    "error": "Lo siento, hubo un error al enviar tu mensaje. Por favor inténtalo de nuevo."
+  },
+  "info": {
+    "title": "Ponte en Contacto",
+    "address": {
+      "title": "Dirección",
+      "value": "Costa Rica"
+    },
+    "phone": {
+      "title": "Teléfono",
+      "value": "+506-8712-3676"
+    },
+    "email": {
+      "title": "Correo",
+      "value": "info@mapea.cr"
+    },
+    "hours": {
+      "title": "Horario de Atención",
+      "value": "Lunes - Viernes: 8:00 AM - 5:00 PM"
+    }
+  }
+}
+
+
+

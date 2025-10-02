@@ -1,22 +1,81 @@
+---
+import '../styles/globals.css';
+import { getCurrentLanguage, getTranslations } from '../utils/i18n-astro';
+import SEO from '../components/SEO.astro';
+import type { SEOConfig } from '../utils/seo';
+import type { SupportedLanguage } from '../i18n/types';
+
+// Props interface para SEO dinámico
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: string;
+  section?: string;
+  canonical?: string;
+  lang?: string;
+}
+
+const { 
+  title: customTitle,
+  description: customDescription,
+  keywords: customKeywords,
+  ogImage = "/og-image.jpg",
+  ogType = "website",
+  section = "home",
+  canonical,
+  lang: customLang
+} = Astro.props;
+
+// Detectar idioma actual
+const currentLang = (customLang || getCurrentLanguage(Astro.url)) as SupportedLanguage;
+
+// Cargar traducciones para los componentes React
+const commonTranslations = await getTranslations(currentLang, 'common');
+const homeTranslations = await getTranslations(currentLang, 'home');
+const contactTranslations = await getTranslations(currentLang, 'contact');
+const navigationTranslations = await getTranslations(currentLang, 'navigation');
+
+// Usar valores personalizados o valores por defecto
+const title = customTitle || (currentLang === 'es' 
+  ? "MAPEA - Soluciones Avanzadas de Levantamiento LiDAR con Drones | Costa Rica"
+  : "MAPEA - Advanced LiDAR Surveying with Drones | Costa Rica");
+
+const description = customDescription || (currentLang === 'es'
+  ? "Servicios profesionales de levantamiento topográfico utilizando tecnología de drones LiDAR de vanguardia. Obtén mapeo 3D preciso, informes catastrales y análisis territorial en Costa Rica."
+  : "Professional topographic surveying services using cutting-edge LiDAR drone technology. Get precise 3D mapping, cadastral reports, and territorial analysis in Costa Rica.");
+
+const keywords = customKeywords || (currentLang === 'es'
+  ? "levantamiento LiDAR, mapeo con drones, levantamientos topográficos, informes catastrales, análisis territorial, Costa Rica, mapeo de precisión, modelado 3D, topografía"
+  : "LiDAR surveying, drone mapping, topographic surveys, cadastral reports, territorial analysis, Costa Rica, precision mapping, 3D modeling, land surveying");
+
+// Configuración SEO
+const seoConfig: SEOConfig = {
+  title,
+  description,
+  keywords,
+  ogImage,
+  ogType,
+  canonical,
+  lang: currentLang
+};
+---
+
 <!doctype html>
-<html lang="en">
+<html lang={currentLang}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- SEO Avanzado -->
+		<SEO 
+			config={seoConfig} 
+			translations={navigationTranslations}
+		/>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
