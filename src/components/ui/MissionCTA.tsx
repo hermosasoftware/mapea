@@ -56,4 +56,3 @@ export const MissionCTA: React.FC<MissionCTAProps> = ({
     />
   );
 };
-
