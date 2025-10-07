@@ -2,20 +2,20 @@ import React from 'react';
 import { Card } from './Card';
 
 interface ServiceCardProps {
-  icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
   className?: string;
   animationClass?: string;
   index?: number;
+  image: string;
 }
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({
-  icon: Icon,
   title,
   description,
   className = '',
   animationClass = '',
+  image,
   index = 0,
 }) => {
   return (
@@ -30,7 +30,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         <div className="h-48 bg-mapea-dark-gray/50 relative overflow-hidden rounded-lg mb-4">
           <div className="absolute inset-0 bg-gradient-to-br from-mapea-olive/20 to-mapea-black/60"></div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <Icon className="text-4xl text-mapea-light-gray/60" />
+            <img src={image} alt={title} className="w-full h-full object-cover" />
           </div>
         </div>
         
