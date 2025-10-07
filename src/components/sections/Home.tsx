@@ -57,7 +57,7 @@ export const Home: React.FC<HomeProps> = ({
               <HeroTitle
                 lines={[
                   t("hero.title.line1"),
-                  "MAP(EA)®",
+                  t("hero.title.line2"),
                   t("hero.title.line3"),
                 ]}
                 highlightText="(EA)"
@@ -120,7 +120,7 @@ export const Home: React.FC<HomeProps> = ({
               <HeroTitle
                 lines={[
                   t("hero.title.line1"),
-                  "MAP(EA)®",
+                  t("hero.title.line2"),
                   t("hero.title.line3"),
                 ]}
                 highlightText="(EA)"

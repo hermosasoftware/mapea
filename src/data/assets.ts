@@ -17,6 +17,11 @@ import mapeaTrueDarkLogo from '../assets/logos/dark_header_logo.png'
 // Videos
 import droneLidarDemo360p from '../assets/videos/drone-lidar-demo-360p.mp4';
 import droneLidarDemo540p from '../assets/videos/drone-lidar-demo-540p.mp4';
+// Services Images
+import card1 from '../assets/services/services_card_1.png'
+import card2 from '../assets/services/services_card_2.png'
+import card3 from '../assets/services/services_card_3.png'
+import card4 from '../assets/services/services_card_4.png'
 
 // Assets organizados por categoría
 export const ASSETS = {
@@ -47,5 +52,12 @@ export const ASSETS = {
   // Modelos 3D (referencias a public)
   models: {
     droneModel: '/3d/dji_m350_with_zenmuse_l2_lidar_scanner.glb',
-  }
+  },
+  // Services Images
+  services: {
+    card1,
+    card2,
+    card3,
+    card4,
+  },
 } as const;
