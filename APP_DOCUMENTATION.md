@@ -75,13 +75,15 @@
     - Fácil integración con React
     - Optimización automática
 
-### Navegación y Scroll
-- **React Scroll** - Navegación suave
-  - **¿Por qué React Scroll?**
+### Navegación y Routing
+- **Sistema Custom de Navegación SPA** - Navegación con URLs dinámicas
+  - **¿Por qué Sistema Custom?**
+    - URLs dinámicas sin recargar la página
+    - Historial completo del navegador (back/forward)
     - Scroll suave entre secciones
-    - Spy para navegación activa
-    - API simple y confiable
-    - Mejor UX que scroll nativo
+    - Detección automática de sección visible
+    - Sin dependencias externas pesadas
+    - Control total sobre la implementación
 
 ### Internacionalización
 - **Sistema Custom** - i18n personalizado
@@ -95,17 +97,160 @@
 
 ## ✨ Características Implementadas
 
-### 1. Sistema de Navegación
+### 1. Sistema de Navegación SPA con URLs Dinámicas
+
+#### 🎯 Objetivo
+Implementar un sistema de navegación que actualice la URL sin recargar la página, mostrando la sección actual en la barra de direcciones mientras mantiene una experiencia SPA fluida.
+
+#### 🏗️ Arquitectura
+
+**Tres capas principales:**
+1. **Astro (Build Time)**: Genera rutas estáticas con `getStaticPaths()`
+2. **React Hook (Runtime)**: Maneja navegación con History API
+3. **Componentes (UI)**: Consumen el hook para navegación
+
+#### 📦 Componentes del Sistema
+
+**1. Rutas Dinámicas Astro**
+```typescript
+// src/pages/en/[section].astro
+export async function getStaticPaths() {
+  const sections = ['home', 'mission', 'services', 'contact'];
+  return sections.map(section => ({ params: { section } }));
+}
+```
+- Genera 4 páginas HTML: `/en/home`, `/en/mission`, `/en/services`, `/en/contact`
+- Todas tienen el mismo contenido (todas las secciones)
+- SEO dinámico según la sección
+
+**2. Hook useSectionRouter**
+```typescript
+// src/hooks/useSectionRouter.ts
+export const useSectionRouter = (currentLang, initialSection) => {
+  return {
+    activeSection,      // Sección actualmente visible
+    navigateToSection,  // Función para navegar
+    setActiveSection    // Actualizar estado manualmente
+  };
+}
+```
+
+**Funcionalidades:**
+- **Navegación por Click**: `pushState()` + scroll suave
+- **Detección Automática**: Intersection Observer detecta scroll
+- **Back/Forward**: Event listener para `popstate`
+- **URLs Directas**: Lee URL al cargar y hace scroll
+
+**3. Integración en Header**
+```typescript
+const { activeSection, navigateToSection } = useSectionRouter(currentLang);
+
+<button onClick={() => navigateToSection("services")}>
+  Services
+</button>
+```
+
+#### 🔄 Flujos de Navegación
+
+**Click en Navbar:**
+```
+Usuario → Click "Services"
+    ↓
+navigateToSection("services")
+    ↓
+pushState() → URL: /en/services (sin recargar)
+    ↓
+scrollIntoView({ behavior: 'smooth' })
+    ↓
+Navbar marca "Services" como activo
+```
+
+**Scroll Manual:**
+```
+Usuario → Scrollea hacia abajo
+    ↓
+Intersection Observer detecta #services visible
+    ↓
+replaceState() → URL: /en/services (sin historial)
+    ↓
+Navbar se actualiza automáticamente
+```
+
+**Botón Atrás del Navegador:**
+```
+Usuario → Presiona "Atrás"
+    ↓
+popstate event
+    ↓
+Lee state.section → "home"
+    ↓
+Scroll instantáneo a #home
+    ↓
+Navbar se actualiza
+```
+
+**URL Directa:**
+```
+Usuario → Abre /en/services
+    ↓
+Astro carga la página (todas las secciones)
+    ↓
+React se hidrata
+    ↓
+useSectionRouter lee URL → "services"
+    ↓
+Scroll automático a #services
+```
+
+#### 🛠️ Tecnologías Clave
+
+| API/Tecnología | Propósito |
+|----------------|-----------|
+| **History API** | `pushState()` / `replaceState()` - Cambiar URL |
+| **Intersection Observer** | Detectar sección visible en viewport |
+| **scrollIntoView()** | Scroll suave/instantáneo |
+| **popstate event** | Navegación Back/Forward |
+| **getStaticPaths()** | Generar rutas estáticas en build |
+
+#### ✅ Ventajas
+
+- **SPA Real**: Nunca recarga al navegar
+- **SEO Friendly**: Cada URL tiene su HTML estático
+- **URLs Compartibles**: `/en/services` lleva directamente a Services
+- **Historial Completo**: Back/Forward funcionan perfectamente
+- **Performance**: Solo carga una vez
+- **Sin Dependencias**: No requiere react-router ni react-scroll
+
+#### 📊 Diferencias: pushState vs replaceState
+
+| Método | Cuándo | Por qué |
+|--------|--------|---------|
+| **pushState()** | Click en navbar | Agregar al historial (permite volver atrás) |
+| **replaceState()** | Scroll automático | Actualizar URL sin llenar el historial |
+
+#### 🔧 Configuración de Intersection Observer
+
+```typescript
+{
+  root: null,                          // Viewport como root
+  rootMargin: '-20% 0px -70% 0px',    // Activar en tercio superior
+  threshold: 0                         // Detectar apenas entra
+}
+```
+Esta configuración marca la sección como activa cuando está en el tercio superior del viewport.
+
 - **Header Responsivo**
   - Logo adaptativo (diferente para mobile/desktop)
-  - Navegación con scroll suave
+  - Navegación con URLs dinámicas
   - Language switcher integrado
   - CTA button para cotizaciones
   - Estados de scroll (transparente → sólido)
+  - Hook `useSectionRouter` para navegación
 
 - **Mobile Menu**
   - Implementado con Radix UI Dialog
   - Navegación completa en overlay
+  - Integración con useSectionRouter
   - Animaciones suaves
   - Accesibilidad completa
 
@@ -583,7 +728,59 @@ const DroneModel = lazy(() => import("../3D/DroneModel"));
 
 ## 🎣 Hooks Personalizados
 
-### 1. useTranslations (`src/hooks/useTranslations.ts`)
+### 1. useSectionRouter (`src/hooks/useSectionRouter.ts`)
+
+**¿Por qué es personalizado?**
+- Navegación SPA con URLs dinámicas
+- Sin dependencias externas (react-router)
+- Integración con History API
+- Intersection Observer para detección automática
+- Soporte completo para back/forward
+
+**Características:**
+```typescript
+export const useSectionRouter = (
+  currentLang: SupportedLanguage,
+  initialSection: string = 'home'
+) => {
+  const [activeSection, setActiveSection] = useState<string>(initialSection);
+  
+  const navigateToSection = useCallback((sectionId: string) => {
+    // 1. Actualizar URL con pushState
+    window.history.pushState({ section: sectionId }, '', `/${currentLang}/${sectionId}`);
+    
+    // 2. Scroll suave a la sección
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    
+    // 3. Actualizar estado
+    setActiveSection(sectionId);
+  }, [currentLang]);
+  
+  // Intersection Observer para detección automática
+  // popstate listener para back/forward
+  // Inicialización desde URL
+  
+  return { activeSection, navigateToSection, setActiveSection };
+}
+```
+
+**Funcionalidades:**
+- `navigateToSection()`: Navegar con click (pushState + scroll)
+- `activeSection`: Sección actualmente visible
+- Detección automática con Intersection Observer
+- Manejo de back/forward con popstate
+- Scroll automático desde URLs directas
+
+**Uso:**
+```typescript
+const { activeSection, navigateToSection } = useSectionRouter('en');
+
+<button onClick={() => navigateToSection('services')}>
+  Services
+</button>
+```
+
+### 2. useTranslations (`src/hooks/useTranslations.ts`)
 
 **¿Por qué es personalizado?**
 - Compatibilidad con Astro SSR
@@ -616,14 +813,30 @@ export function useTranslations(
 - Soporte para traducciones anidadas
 - Fallback a la clave si no encuentra traducción
 
-### 2. Hooks Eliminados (Evolución del Proyecto)
+### 3. useIntersectionObserver (`src/hooks/useIntersectionObserver.ts`)
+
+**¿Por qué es personalizado?**
+- Detección de elementos en viewport
+- Reutilizable en múltiples componentes
+- Hook optimizado para performance
+
+**Uso:**
+- Contact.tsx: Animaciones al entrar en viewport
+- ContactMethods.tsx: Animaciones staggered
+
+### 4. Hooks Eliminados (Evolución del Proyecto)
 
 Durante el desarrollo, se crearon y eliminaron varios hooks:
 
+#### react-scroll (Eliminado - Octubre 2025)
+- **¿Por qué se eliminó?** Reemplazado por useSectionRouter
+- **Problema:** No soportaba URLs dinámicas
+- **Solución:** Sistema custom con History API
+
 #### useScrollSpy (Eliminado)
-- **¿Por qué se eliminó?** Reemplazado por react-scroll
+- **¿Por qué se eliminó?** Reemplazado por useSectionRouter
 - **Problema:** Duplicación de funcionalidad
-- **Solución:** react-scroll con spy integrado
+- **Solución:** Intersection Observer integrado
 
 #### useSimpleTranslation (Eliminado)
 - **¿Por qué se eliminó?** Reemplazado por useTranslations
@@ -713,7 +926,7 @@ mapea/
 ├── src/
 │   ├── components/
 │   │   ├── layout/
-│   │   │   └── Header.tsx              # Header principal
+│   │   │   └── Header.tsx              # Header principal con useSectionRouter
 │   │   ├── sections/
 │   │   │   ├── Home.tsx                # Sección Home (React)
 │   │   │   ├── Contact.tsx             # Sección Contact (React)
@@ -742,6 +955,8 @@ mapea/
 │   │       ├── ServiceCard.tsx         # 🆕 Tarjeta de servicio
 │   │       └── ClientCard.tsx          # 🆕 Tarjeta de cliente
 │   ├── hooks/
+│   │   ├── useSectionRouter.ts         # 🆕 Hook de navegación SPA
+│   │   ├── useIntersectionObserver.ts  # Hook de detección viewport
 │   │   └── useTranslations.ts          # Hook de traducciones
 │   ├── utils/
 │   │   ├── i18n-astro.ts              # Utilidades i18n
@@ -812,11 +1027,14 @@ mapea/
 │   ├── layouts/
 │   │   └── Layout.astro               # Layout principal
 │   └── pages/
-│       ├── index.astro                # Página principal
+│       ├── index.astro                # Página principal (redirect)
+│       ├── 404.astro                  # 🆕 Página 404 personalizada
 │       ├── en/
-│       │   └── index.astro            # Página inglés
+│       │   ├── [section].astro        # 🆕 Rutas dinámicas inglés
+│       │   └── index.astro            # Redirect a /en/home
 │       ├── es/
-│       │   └── index.astro            # Página español
+│       │   ├── [section].astro        # 🆕 Rutas dinámicas español
+│       │   └── index.astro            # Redirect a /es/home
 │       ├── sitemap.xml.ts             # Sitemap dinámico
 │       └── robots.txt.ts              # Robots.txt
 ├── astro.config.mjs                   # Configuración Astro
@@ -869,13 +1087,21 @@ mapea/
 - **Performance**: Purging automático
 - **Responsive**: Breakpoints integrados
 
-### 5. ¿Por qué react-scroll?
+### 5. ¿Por qué Sistema de Routing Custom?
 
-**Ventajas:**
-- **UX mejorada**: Scroll suave
-- **Spy integrado**: Navegación activa
-- **API simple**: Fácil implementación
-- **Performance**: Optimizado para scroll
+**Problema con react-scroll:**
+- No actualiza la URL
+- URLs no compartibles
+- Sin soporte para back/forward
+- Sin historial del navegador
+
+**Solución Custom (useSectionRouter):**
+- **URLs Dinámicas**: Actualiza URL sin recargar
+- **Historial**: Soporte completo para back/forward
+- **SEO**: Cada sección tiene su URL única
+- **Compartible**: URLs como `/en/services` funcionan
+- **Sin dependencias**: Historia API nativa
+- **Performance**: Optimizado con Intersection Observer
 
 ---
 
@@ -914,7 +1140,24 @@ mapea/
 - Open Graph y Twitter Cards
 - Hreflang para SEO multilingüe
 
-### ✅ Fase 6: Refactorización de Componentes (Diciembre 2024)
+### ✅ Fase 6: Sistema de Navegación SPA (Octubre 2025)
+- **Objetivo**: Implementar navegación con URLs dinámicas
+- **Componentes Creados**:
+  - useSectionRouter hook
+  - Rutas dinámicas [section].astro
+  - Página 404 personalizada
+- **Problemas Resueltos**:
+  - URLs no reflejaban la sección actual
+  - Sin soporte para back/forward
+  - URLs no compartibles
+  - react-scroll eliminado (dependencia innecesaria)
+- **Resultado**:
+  - SPA completa con URLs dinámicas
+  - Historial del navegador funcional
+  - SEO mejorado con URLs únicas
+  - 6 paquetes menos en node_modules
+
+### ✅ Fase 7: Refactorización de Componentes (Diciembre 2024)
 - **Objetivo**: Mejorar mantenibilidad y reutilización
 - **Componentes Base Creados**:
   - FormField, StatsCard, IconCard
@@ -929,7 +1172,7 @@ mapea/
   - Errores de importación (.tsx)
   - Errores de tipos TypeScript
 
-### ✅ Fase 5: SEO y Routing Avanzado
+### ✅ Fase 5: SEO y Meta Tags Avanzados
 - Sitemap XML dinámico
 - Robots.txt optimizado
 - Meta tags dinámicos
@@ -984,7 +1227,52 @@ mapea/
 ---
 
 
-## 📋 Resumen de Cambios Recientes (Diciembre 2024)
+## 📋 Resumen de Cambios Recientes
+
+### 🚀 Sistema de Navegación SPA (Octubre 2025)
+
+#### 🆕 Nuevas Funcionalidades
+1. **useSectionRouter Hook** - Sistema de navegación personalizado
+   - History API para URLs dinámicas
+   - Intersection Observer para detección automática
+   - Soporte completo para back/forward
+   - Scroll suave a secciones
+
+2. **Rutas Dinámicas Astro** - `/en/[section].astro` y `/es/[section].astro`
+   - getStaticPaths() genera rutas estáticas
+   - SEO dinámico por sección
+   - Todas las secciones en una página
+
+3. **Página 404** - Página de error personalizada
+   - Detecta idioma desde URL
+   - Diseño dark minimalista
+   - Link para volver al inicio
+
+#### 🔧 Archivos Modificados
+- **Header.tsx**: Integrado con useSectionRouter
+- **MobileMenu.tsx**: Navegación con navigateToSection
+- **Home.tsx**: Botón Get Quote actualizado
+- **constants.ts**: Limpieza de propiedades href innecesarias
+
+#### 🗑️ Código Eliminado
+- **react-scroll**: 6 paquetes removidos
+- **@types/react-scroll**: Ya no necesario
+- **Imports innecesarios**: COMPANY_INFO sin uso
+- **Código comentado**: Logo en Home.tsx
+- **Documentación temporal**: 3 archivos MD eliminados
+
+#### ✅ Beneficios
+- ✅ **URLs Dinámicas**: `/en/home`, `/en/services`, etc.
+- ✅ **SPA Completa**: Sin recargas de página
+- ✅ **SEO Mejorado**: URLs únicas por sección
+- ✅ **Historial**: Back/Forward funcionan
+- ✅ **Compartible**: URLs directas funcionan
+- ✅ **Menos código**: 6 paquetes eliminados
+- ✅ **Sin dependencias**: Sistema nativo con APIs web
+
+---
+
+### 📦 Refactorización de Componentes (Diciembre 2024)
 
 ### 🆕 Nuevos Componentes Creados
 1. **FormField.tsx** - Campo de formulario reutilizable
@@ -1171,4 +1459,4 @@ La arquitectura modular y los componentes reutilizables facilitan el mantenimien
 
 ---
 
-*Documentación generada automáticamente - Última actualización: Enero 2024*
+*Documentación generada y actualizada - Última actualización: Octubre 2025*
