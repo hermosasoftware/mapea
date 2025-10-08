@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import { Link as ScrollLink } from "react-scroll";
 import { FaBars } from "react-icons/fa";
-import { NAVIGATION_ITEMS, COMPANY_INFO } from "../../data/constants";
+import { NAVIGATION_ITEMS } from "../../data/constants";
 import { Button } from "../ui/Button";
 import { OptimizedImageReact } from "../ui/OptimizedImageReact";
 import { MobileMenu } from "../ui/MobileMenu";
 import { LanguageSwitcher } from "../ui/LanguageSwitcher";
 import { useTranslations } from "../../hooks/useTranslations";
+import { useSectionRouter } from "../../hooks/useSectionRouter";
 import type { SupportedLanguage } from "../../i18n/types";
 import styles from "../../styles/animations/header.module.css";
 import { ASSETS } from "../../data/assets";
@@ -25,8 +25,8 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
   const { t, changeLanguage } = useTranslations(translations, currentLang);
+  const { activeSection, navigateToSection } = useSectionRouter(currentLang);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,10 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
   const closeMenu = () => setIsOpen(false);
 
   const handleLogoClick = () => {
-    const homeSection = document.getElementById("home");
-    if (homeSection) {
-      homeSection.scrollIntoView({ behavior: "smooth" });
-    }
+    navigateToSection("home");
   };
 
   return (
@@ -95,13 +92,8 @@ export const Header: React.FC<HeaderProps> = ({
               <NavigationMenu.List className={styles.navigationMenuList}>
                 {NAVIGATION_ITEMS.map((item) => (
                   <NavigationMenu.Item key={item.id}>
-                    <ScrollLink
-                      to={item.id}
-                      smooth={true}
-                      duration={800}
-                      spy={true}
-                      activeClass={styles.navItemActive}
-                      onSetActive={(to: string) => setActiveSection(to)}
+                    <button
+                      onClick={() => navigateToSection(item.id)}
                       className={`${styles.navigationMenuTrigger} ${
                         styles.navItem
                       } ${
@@ -113,26 +105,25 @@ export const Header: React.FC<HeaderProps> = ({
                       }`}
                     >
                       {navigationTranslations[item.id] || item.label}
-                    </ScrollLink>
+                    </button>
                   </NavigationMenu.Item>
                 ))}
               </NavigationMenu.List>
             </NavigationMenu.Root>
 
             <div className="ml-8">
-              <ScrollLink to="contact" smooth={true} duration={800}>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className={`${styles.ctaButton} ${
-                    isScrolled
-                      ? "border-mapea-olive text-mapea-olive hover:bg-mapea-olive hover:text-black"
-                      : "border-white text-white hover:bg-white hover:text-black"
-                  }`}
-                >
-                  {t("buttons.getQuote")}
-                </Button>
-              </ScrollLink>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => navigateToSection("contact")}
+                className={`${styles.ctaButton} ${
+                  isScrolled
+                    ? "border-mapea-olive text-mapea-olive hover:bg-mapea-olive hover:text-black"
+                    : "border-white text-white hover:bg-white hover:text-black"
+                }`}
+              >
+                {t("buttons.getQuote")}
+              </Button>
             </div>
 
             {/* Language Switcher - Desktop */}
@@ -171,6 +162,7 @@ export const Header: React.FC<HeaderProps> = ({
           activeSection={activeSection}
           currentLang={currentLang}
           changeLanguage={changeLanguage}
+          navigateToSection={navigateToSection}
         />
       </nav>
     </header>
