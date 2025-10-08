@@ -137,5 +137,3 @@ export const useSectionRouter = (
     setActiveSection
   };
 };
-
-
