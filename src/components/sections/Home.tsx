@@ -2,7 +2,6 @@ import React, { Suspense, lazy } from "react";
 import { Button } from "../ui/Button";
 import { HeroTitle } from "../ui/HeroTitle";
 import { DroneModelFallback } from "../3D/DroneModelFallback";
-import { COMPANY_INFO } from "../../data/constants";
 import { useTranslations } from "../../hooks/useTranslations";
 import type { SupportedLanguage } from "../../i18n/types";
 import { ASSETS } from "../../data/assets";
@@ -28,10 +27,17 @@ export const Home: React.FC<HomeProps> = ({
   const { t: tCommon } = useTranslations(commonTranslations, currentLang);
 
   const handleGetQuote = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+    // Usar navegación con History API
+    const navigateToContact = () => {
+      const newUrl = `/${currentLang}/contact`;
+      window.history.pushState({ section: 'contact' }, '', newUrl);
+      
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+    navigateToContact();
   };
 
   return (
@@ -39,13 +45,6 @@ export const Home: React.FC<HomeProps> = ({
       id="home"
       className="min-h-screen bg-mapea-black text-white relative overflow-hidden"
     >
-      {/* Logo en la esquina superior izquierda 
-      <div
-        className={`absolute -top-20 left-4 z-20 ${styles.fadeInUp} hidden lg:block`}
-        >
-               <img src={ASSETS.logos.mapeaTransparent01.src} alt="Mapea" className="h-[300px] object-contain" />
-      </div>
-*/}
       <div className="min-h-screen flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           {/* Mobile Layout - Vertical Stack */}

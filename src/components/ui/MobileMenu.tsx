@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import { Link as ScrollLink } from 'react-scroll';
 import { FaTimes } from 'react-icons/fa';
 import { Button } from './Button';
 import { NAVIGATION_ITEMS } from '../../data/constants';
@@ -15,6 +14,7 @@ interface MobileMenuProps {
   activeSection: string;
   currentLang: SupportedLanguage;
   changeLanguage: (lang: SupportedLanguage) => void;
+  navigateToSection: (sectionId: string) => void;
 }
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
@@ -24,7 +24,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   activeSection,
   currentLang,
   changeLanguage,
+  navigateToSection,
 }) => {
+  const handleNavClick = (sectionId: string) => {
+    navigateToSection(sectionId);
+    onClose();
+  };
   return (
     <Dialog.Root open={isOpen} onOpenChange={onClose}>
       <Dialog.Portal>
@@ -56,14 +61,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           {/* Navigation Items */}
           <div className="flex flex-col space-y-2 p-6">
             {NAVIGATION_ITEMS.map((item) => (
-              <ScrollLink
+              <button
                 key={item.id}
-                to={item.id}
-                smooth={true}
-                duration={800}
-                spy={true}
-                activeClass="mobileNavActive"
-                onClick={onClose}
+                onClick={() => handleNavClick(item.id)}
                 className={`${styles.mobileNavItem} ${
                   activeSection === item.id 
                     ? 'bg-mapea-olive/10 text-mapea-olive font-semibold border-l-4 border-mapea-olive' 
@@ -71,26 +71,20 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                 } font-medium text-left transition-all duration-200 py-3 px-4 rounded-lg`}
               >
                 {item.label}
-              </ScrollLink>
+              </button>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="p-6 border-t border-gray-200">
-            <ScrollLink
-              to="contact"
-              smooth={true}
-              duration={800}
-              onClick={onClose}
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => handleNavClick("contact")}
+              className="w-full border-mapea-olive text-mapea-olive hover:bg-mapea-olive hover:text-white"
             >
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="w-full border-mapea-olive text-mapea-olive hover:bg-mapea-olive hover:text-white"
-              >
-                Get Quote
-              </Button>
-            </ScrollLink>
+              Get Quote
+            </Button>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

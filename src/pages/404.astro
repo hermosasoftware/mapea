@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const urlPath = Astro.url.pathname;
+let currentLang: 'en' | 'es' = 'en';
+
+if (urlPath.startsWith('/es')) {
+  currentLang = 'es';
+}
+---
+
+<Layout 
+  title="404 - Page Not Found"
+  description="Page not found"
+  keywords="404"
+  lang={currentLang}
+>
+  <div class="min-h-screen bg-mapea-black flex items-center justify-center px-4">
+    <div class="text-center">
+      <h1 class="text-8xl md:text-9xl font-bold text-white mb-4">
+        404
+      </h1>
+      <p class="text-xl md:text-2xl text-mapea-light-gray">
+        Page Not Found
+      </p>
+      <a href="/" class="text-xl md:text-2xl text-mapea-light-gray">Go to Home</a>
+    </div>
+  </div>
+</Layout>

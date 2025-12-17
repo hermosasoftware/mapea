@@ -16,11 +16,10 @@ export const COMPANY_INFO = {
 };
 
 export const NAVIGATION_ITEMS = [
-  { id: 'home', label: 'Home', href: '#home' },
-  { id: 'mission', label: 'Our Mission', href: '#mission' },
-  { id: 'services', label: 'Services', href: '#services' },
-  //{ id: 'clients', label: 'Clients', href: '#clients' },
-  { id: 'contact', label: 'Contact', href: '#contact' }
+  { id: 'home', label: 'Home' },
+  { id: 'mission', label: 'Our Mission' },
+  { id: 'services', label: 'Services' },
+  { id: 'contact', label: 'Contact' }
 ];
 
 // SEO Data para diferentes secciones
