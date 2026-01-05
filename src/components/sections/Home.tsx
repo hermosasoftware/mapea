@@ -84,7 +84,7 @@ export const Home: React.FC<HomeProps> = ({
             <div
               className={`relative ${styles.scaleIn} ${styles.staggered4} w-full max-w-sm`}
             >
-              <div className="w-full h-80 rounded-lg overflow-visible" style={{outline: '1px solid red'}}>
+              <div className="w-full h-80 rounded-lg overflow-visible">
                 <Suspense
                   fallback={<DroneModelFallback className="w-full h-full" />}
                 >

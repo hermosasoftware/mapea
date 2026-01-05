@@ -8,7 +8,7 @@ import additionalLandscape from '../assets/backgrounds/additional-landscape.jpeg
 import missionBG from '../assets/backgrounds/QUEBRADA.jpg'
 import clientBG from '../assets/backgrounds/true_clients_bg.jpeg'
 import trueMissionBG from '../assets/backgrounds/mission_bg.jpg'
-import contactVideo from '../assets/videos/contact_bg_video.mp4'
+import contactVideo from '../assets/videos/contact_bg.mp4'
 
 // Logos
 import mapeaLogoTransparent01 from '../assets/logos/mapea-logo-transparent-01.png';

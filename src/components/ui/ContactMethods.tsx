@@ -49,7 +49,7 @@ export const ContactMethods: React.FC<ContactMethodsProps> = ({
   ];
 
   return (
-    <div className={`flex-col sm:flex sm:flex-row sm:justify-between sm:my-2 space-y-2 sm:space-y-0 mt-2 ${className}`} ref={ref as React.RefObject<HTMLDivElement>} >
+    <div className={`flex-col sm:flex sm:flex-row sm:justify-between sm:pt-14 space-y-2 sm:space-y-0 pt-2 ${className}`} ref={ref as React.RefObject<HTMLDivElement>}>
       {contactMethods.map((method, index) => (
         <div
           key={method.title}

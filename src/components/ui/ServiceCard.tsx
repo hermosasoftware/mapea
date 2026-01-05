@@ -30,7 +30,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         <div className="h-48 bg-mapea-dark-gray/50 relative overflow-hidden rounded-lg mb-4">
           <div className="absolute inset-0 bg-gradient-to-br from-mapea-olive/20 to-mapea-black/60"></div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <img src={image} alt={title} className="w-full h-full object-cover" />
+            <img src={image} alt={title} className="sm:w-full sm:h-full h-10/12 w-3/4 object-cover"/>
           </div>
         </div>
         
