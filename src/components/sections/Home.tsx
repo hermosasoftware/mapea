@@ -46,7 +46,7 @@ export const Home: React.FC<HomeProps> = ({
 
     >
       <div className="min-h-screen flex items-center">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 w-full">
           {/* Mobile Layout - Vertical Stack */}
           <div className="flex flex-col lg:hidden justify-center items-center min-h-screen space-y-2 text-center">
             {/* Texto Principal - Mobile */}
