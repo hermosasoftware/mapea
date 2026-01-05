@@ -4,7 +4,6 @@ import { HeroTitle } from "../ui/HeroTitle";
 import { DroneModelFallback } from "../3D/DroneModelFallback";
 import { useTranslations } from "../../hooks/useTranslations";
 import type { SupportedLanguage } from "../../i18n/types";
-import { ASSETS } from "../../data/assets";
 import styles from "../../styles/animations/home.module.css";
 
 // Lazy load the heavy 3D model component
@@ -44,6 +43,7 @@ export const Home: React.FC<HomeProps> = ({
     <section
       id="home"
       className="min-h-screen bg-mapea-black text-white relative overflow-hidden"
+
     >
       <div className="min-h-screen flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -89,7 +89,7 @@ export const Home: React.FC<HomeProps> = ({
                   fallback={<DroneModelFallback className="w-full h-full" />}
                 >
                   <DroneModel
-                    className="w-full h-full"
+                    className="w-full h-full outline-2"
                     autoRotate={true}
                     enableControls={true}
                   />
@@ -151,7 +151,7 @@ export const Home: React.FC<HomeProps> = ({
               <div
                 className={`relative ${styles.scaleIn} ${styles.staggered4}`}
               >
-                <div className="w-[28rem] h-[28rem] xl:w-[32rem] xl:h-[32rem] 2xl:w-[36rem] 2xl:h-[36rem] rounded-lg overflow-visible shadow-2xl">
+                <div className="w-[28rem] h-[28rem] xl:w-[32rem] xl:h-[32rem] 2xl:w-[36rem] 2xl:h-[36rem] rounded-lg overflow-visible">
                   <Suspense
                     fallback={<DroneModelFallback className="w-full h-full" />}
                   >

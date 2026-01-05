@@ -44,17 +44,7 @@ export const Contact: React.FC<ContactProps> = ({
       icon: FaInstagram,
       href: COMPANY_INFO.socialMedia.instagram,
       name: "Instagram",
-    },
-    {
-      icon: FaLinkedin,
-      href: COMPANY_INFO.socialMedia.linkedin,
-      name: "LinkedIn",
-    },
-    {
-      icon: FaTwitter,
-      href: COMPANY_INFO.socialMedia.twitter,
-      name: "Twitter",
-    },
+    }
   ];
 
   return (
@@ -97,11 +87,6 @@ export const Contact: React.FC<ContactProps> = ({
               commonTranslations={commonTranslations}
               currentLang={currentLang}
             />
-
-            <ContactMethods
-              translations={translations}
-              currentLang={currentLang}
-            />
           </div>
 
           {/* Right Column - Image & Social */}
@@ -110,46 +95,53 @@ export const Contact: React.FC<ContactProps> = ({
               isIntersecting ? styles.fadeInRight : ""
             } ${styles.staggered4}`}
           >
-            <div className="space-y-6 lg:space-y-8">
+            <div>
               {/* Sunset Image */}
               <div
                 className={`relative ${styles.imageContainer} ${styles.scaleIn} ${styles.staggered5}`}
               >
-                <OptimizedImageReact
-                  src={ASSETS.backgrounds.additionalLandscape}
-                  alt="Beautiful Costa Rican sunset landscape - inspiring natural scenery representing MAPEA's connection to the territory we survey and map"
-                  width={800}
-                  height={500}
-                  className="w-full h-[250px] sm:h-[300px] lg:h-[400px] xl:h-[500px] object-cover rounded-xl lg:rounded-2xl"
-                  loading="lazy"
-                />
-                <div className={styles.imageOverlay}></div>
+                {/*video as background*/}
+                <video 
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover rounded-t-xl lg:rounded-t-2xl z-50"
+                >
+                  <source src={ASSETS.videos.contactVideo} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
 
               {/* Social Media Section */}
               <div
-                className={`${isIntersecting ? styles.fadeInUp : ""} ${
+                className={` ${isIntersecting ? styles.fadeInUp : ""} ${
                   styles.staggered6
                 }`}
-              >
-                <Card variant="glass" padding="lg" className={styles.formCard}>
-                  <h4 className="text-xl sm:text-2xl font-bold text-mapea-white mb-4 sm:mb-6 text-center">
+                >
+                <Card className={`bg-mapea-light-gray rounded-b-xl lg:rounded-b-2xl rounded-t-none lg:flex lg:flex-row lg:justify-around lg:items-center lg:py-2`}>
+                  <h4 className="text-xl sm:text-2xl font-bold text-mapea-black mb-4 text-center pt-1 my-auto">
                     Get Social
                   </h4>
-                  <div className="flex justify-center space-x-4 sm:space-x-6">
+                  <div className="flex justify-center space-x-4 sm:space-x-6 pb-1">
                     {socialLinks.map((social) => (
                       <a
                         key={social.name}
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`w-12 h-12 sm:w-16 sm:h-16 ${styles.socialIcon} rounded-full flex items-center justify-center text-mapea-white hover:text-mapea-black text-xl sm:text-2xl transition-all duration-300 hover:scale-110`}
+                        className={`w-12 h-12 sm:w-16 sm:h-16 ${styles.socialIcon} rounded-full flex items-center justify-center text-mapea-black hover:text-mapea-light-gray text-xl sm:text-2xl transition-all duration-300 hover:scale-110`}
                       >
                         <social.icon />
                       </a>
                     ))}
                   </div>
                 </Card>
+                <ContactMethods
+                  translations={translations}
+                  currentLang={currentLang}
+               />
               </div>
             </div>
           </div>

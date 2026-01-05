@@ -8,6 +8,7 @@ interface CardProps {
   padding?: 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'default' | 'dark' | 'glass' | 'transparent';
   onClick?: () => void;
+  style?: React.CSSProperties;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -16,7 +17,8 @@ export const Card: React.FC<CardProps> = ({
   hoverable = true,
   padding = 'md',
   variant = 'default',
-  onClick
+  onClick,
+  style
 }) => {
   const baseClasses = 'rounded-xl transition-all duration-300';
   
@@ -50,6 +52,7 @@ export const Card: React.FC<CardProps> = ({
     <div
       className={cardClasses}
       onClick={onClick}
+      style={style}
     >
       {children}
     </div>
