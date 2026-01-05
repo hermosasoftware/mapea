@@ -49,7 +49,7 @@ export const ContactMethods: React.FC<ContactMethodsProps> = ({
   ];
 
   return (
-    <div className={`space-y-3 sm:space-y-4 pt-6 sm:pt-8 ${className}`} ref={ref as React.RefObject<HTMLDivElement>}>
+    <div className={`flex-col sm:flex sm:flex-row sm:justify-between sm:my-2 space-y-2 sm:space-y-0 mt-2 ${className}`} ref={ref as React.RefObject<HTMLDivElement>} >
       {contactMethods.map((method, index) => (
         <div
           key={method.title}
@@ -68,7 +68,7 @@ export const ContactMethods: React.FC<ContactMethodsProps> = ({
                 <method.icon className="text-lg sm:text-xl text-mapea-olive group-hover:text-white transition-colors duration-300" />
               </div>
               <div className="flex-1 min-w-0">
-                <h4 className="text-base sm:text-lg font-bold text-mapea-white group-hover:text-mapea-black transition-colors duration-300 truncate">
+                <h4 className="sm:hidden block text-base sm:text-lg font-bold text-mapea-white group-hover:text-mapea-black transition-colors duration-300 truncate">
                   {method.title}
                 </h4>
                 <a

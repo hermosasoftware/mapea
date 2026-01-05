@@ -46,12 +46,12 @@ const VALUES = [
 
 <section
   id="mission"
-  class="relative min-h-screen py-20 lg:py-32 overflow-hidden"
+  class="relative min-h-screen py-20 lg:py-32 overflow-hidden flex items-center justify-center"
 >
   <!-- Optimized Background Image -->
   <div class="absolute inset-0 -z-10">
     <OptimizedImage
-      src={ASSETS.backgrounds.missionBG}
+      src={ASSETS.backgrounds.trueMissionBG}
       alt="Tropical jungle landscape showcasing MAPEA's LiDAR surveying territory in Costa Rica - dense forest canopy ideal for precision drone mapping"
       width={1920}
       height={1080}
@@ -62,11 +62,38 @@ const VALUES = [
   </div>
 
   <!-- Dark overlay for readability using palette colors -->
-  <div class="absolute inset-0 bg-mapea-black/70"></div>
+  <div class="absolute inset-0 bg-mapea-black/30"></div>
 
-  <div class="relative section-container">
+  <!-- Text Container - Centered -->
+  <div class="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+    <p class="
+      text-center
+      text-white
+      text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl
+      leading-[1.8]
+      tracking-wide
+      font-light
+    ">
+      At <span class="font-bold">MAPEA</span>, we see the world from a different perspective.
+      <br /><br />
+  
+      We use the <span class="font-bold">
+        best surveying technology
+      </span> to turn data into smart decisions.
+      <br /><br />
+  
+      Our team blends <span class="font-bold">
+        precision, innovation, and vision
+      </span>, because every project deserves more than maps — it deserves
+      <span class="font-bold">
+        {" "}real and reliable solutions
+      </span>.
+    </p>
+  </div>
+  
     <!-- Hero Section - Dark Theme -->
-    <div class="text-center mb-20">
+    {
+      /*<div class="text-center mb-20">
       <h1
         class={`text-4xl lg:text-6xl font-bold text-mapea-white mb-8 ${styles.fadeInDown} ${styles.staggered1} ${styles.darkGlow}`}
       >
@@ -138,6 +165,6 @@ const VALUES = [
       className={`${styles.slideInFromBottom} ${styles.staggered6}`}
       animationClass={`${styles.slideInFromBottom} ${styles.staggered6}`}
       client:load
-    />
-  </div>
+    /> */
+    }
 </section>

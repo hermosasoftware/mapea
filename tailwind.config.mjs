@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         'mapea': {
-          'black': '#000000',
+          'black': '#000000E6',
           'dark-gray': '#3c3c3c',
           'light-gray': '#b5b5b5',
           'olive': '#888c71',
