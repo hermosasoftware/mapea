@@ -8,8 +8,8 @@ export const COMPANY_INFO = {
   address: 'Costa Rica',
   website: 'https://mapea.cr',
   socialMedia: {
-    facebook: 'https://facebook.com/mapea',
-    instagram: 'https://instagram.com/mapea',
+    facebook: 'https://www.facebook.com/profile.php?id=61586336587355',
+    instagram: 'https://www.instagram.com/mapea.cr',
     linkedin: 'https://linkedin.com/company/mapea',
     twitter: 'https://twitter.com/mapea'
   }
