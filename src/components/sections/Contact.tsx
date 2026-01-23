@@ -8,7 +8,6 @@ import {
 import { Card } from "../ui/Card";
 import { Form } from "../ui/Form";
 import { ContactMethods } from "../ui/ContactMethods";
-import { OptimizedImageReact } from "../ui/OptimizedImageReact";
 import { COMPANY_INFO } from "../../data/constants";
 import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import { useTranslations } from "../../hooks/useTranslations";
