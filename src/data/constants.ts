@@ -4,7 +4,7 @@ export const COMPANY_INFO = {
   mission: 'We transform traditional topography with cutting-edge LiDAR technology, offering precise mapping and territorial analysis that drives sustainable development.',
   description: 'We are specialists in topographic surveys with LiDAR drones, providing innovative and precise solutions for territorial analysis.',
   email: 'info@mapea.cr',
-  phone: '+506-8712-3676',
+  phone: '+506-8695-1112',
   address: 'Costa Rica',
   website: 'https://mapea.cr',
   socialMedia: {
@@ -60,7 +60,7 @@ export const SCHEMA_DATA = {
     "url": "https://mapea.cr",
     "logo": "https://mapea.cr/logo.png",
     "description": "Professional LiDAR surveying services using cutting-edge drone technology for precise 3D mapping and territorial analysis.",
-    "telephone": "+506-8712-3676",
+    "telephone": "+506-8695-1112",
     "email": "info@mapea.cr",
     "address": {
       "@type": "PostalAddress",

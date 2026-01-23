@@ -75,7 +75,7 @@ export function generateJSONLD(config: SEOConfig) {
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
     image: `${baseUrl}/og-image.jpg`,
-    telephone: '+506-8712-3676',
+    telephone: '+506-8695-1112',
     email: 'info@mapea.cr',
     address: {
       '@type': 'PostalAddress',
