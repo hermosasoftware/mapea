@@ -26,10 +26,14 @@ import card3 from '../assets/services/services_card_3.png'
 import card4 from '../assets/services/services_card_4.png'
 
 //services cards icons
-import card1Icon from '../assets/services/icons/service_card_icon_1.png'
-import card2Icon from '../assets/services/icons/service_card_icon_2.png'
-import card3Icon from '../assets/services/icons/service_card_icon_3.png'
-import card4Icon from '../assets/services/icons/service_card_icon_4.png'
+import card1Icon from '../assets/services/icons/ICONO V3 _1.png'
+import card2Icon from '../assets/services/icons/ICONO V3 _2.png'
+import card3Icon from '../assets/services/icons/ICONO V3 _3.png'
+import card4Icon from '../assets/services/icons/ICONO V3 _4.png'
+import cardIconV1 from '../assets/services/icons/ICONO V3 _1.png'
+import cardIconV2 from '../assets/services/icons/ICONO V3 _2.png'
+import cardIconV3 from '../assets/services/icons/ICONO V3 _3.png'
+import cardIconV4 from '../assets/services/icons/ICONO V3 _4.png'
 
 
 // Assets organizados por categoría
@@ -76,5 +80,9 @@ export const ASSETS = {
     card2Icon,
     card3Icon,
     card4Icon,
+    cardIconV1,
+    cardIconV2,
+    cardIconV3,
+    cardIconV4,
   },
 } as const;
